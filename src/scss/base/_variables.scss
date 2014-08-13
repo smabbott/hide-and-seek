@@ -28,8 +28,14 @@ $h6: 16;
 $default-font-size:   16;
 $default-line-height: 21;
 
+// greys
+$grey-dark: lighten(#000, 25%);
+$grey-medium: lighten(#000, 50%);
+$grey-light:  lighten(#000, 80%);
+
 // Default Colours
-$default-font-color:          #434343;
+$default-font-color:          $grey-dark;
 $default-link-color:          #27ae61;
 $default-button-color:        #e74b3c;
 $default-button-hover-color:  #f43f3f;
+

@@ -1,0 +1,40 @@
+body{
+  background-color:$grey-light;
+}
+
+.sidelined{
+  position:relative;
+  .mask{
+    background-color:$grey-light;
+    position:relative;
+  }
+  &:before{
+    content:'';
+    display:block;
+    width:100%;
+    border-top:2px solid $grey-dark;
+    top:0.9em;
+    position:relative;
+  }
+}
+
+.container{
+  margin:2em auto 0 auto;
+}
+
+.list-grid{
+  li{
+    padding:1em;
+  }
+}
+
+.card{
+  background-color:$grey-dark;
+  color:white;
+  padding:1em;
+}
+
+.vacuum{
+  margin-left:-1em;
+  margin-right:-1em;
+}
