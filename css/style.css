@@ -1203,3 +1203,6 @@ ul {
   padding-right: 0.5em;
   font-size: 0.8em;
   background-color: gray; }
+
+button:focus {
+  outline: none; }

@@ -84,3 +84,7 @@ ul{
   // border:1px solid $grey-light;
   background-color:$grey-medium;
 }
+
+button:focus{
+  outline:none;
+}
