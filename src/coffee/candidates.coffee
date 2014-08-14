@@ -1,16 +1,135 @@
 window.candidates ||= [
-  {firstName:'David',   lastName:"Bowie"},
-  {firstName:'Justin',  lastName:"Timberlake"},
-  {firstName:'Debbie',  lastName:'Harry'},  
-  {firstName: 'Aretha', lastName: 'Franklin'},
-  {firstName: 'John',   lastName: 'Coltrane'}, 
-  {firstName: 'Elvis',  lastName:  'Costello'}, 
-  {firstName: 'Robert', lastName: 'Johnson'},
-  {firstName: 'Peter',  lastName: 'Brötzmann'},
-  {firstName: 'Billie',  lastName: 'Holiday'},
-  {firstName: 'Chalie',  lastName: 'Parker'},
-  {firstName: 'Thelonious',  lastName: 'Monk'},
-  {firstName: 'Chalie',  lastName: 'Christian'},
-  {firstName: 'Lionel',  lastName: 'Hampton'},
-  {firstName: 'Joe',  lastName: 'Pass'}
+  {
+    firstName:'David',   
+    lastName:"Bowie", 
+    favoriteColor:'blue', 
+    tags:[
+      'rock & pop',
+      'vocals'
+
+    ]
+  },
+  {
+    firstName:'Justin',  
+    lastName:"Timberlake", 
+    favoriteColor:'red',  
+    tags:[
+      'rock & pop',
+      'vocals'
+
+    ]
+  },
+  {
+    firstName:'Debbie',  
+    lastName:'Harry', 
+    favoriteColor:'green',  
+    tags:[
+      'rock & pop',
+      'vocals'
+
+    ]
+  },  
+  {
+    firstName: 'Aretha', 
+    lastName: 'Franklin', 
+    favoriteColor:'beige',  
+    tags:[
+      'soul',
+      'vocals'
+
+    ]
+  },
+  {
+    firstName: 'John',   
+    lastName: 'Coltrane', 
+    favoriteColor:'blue',  
+    tags:[
+      'jazz',
+      'sax'
+
+    ]
+  }, 
+  {
+    firstName: 'Elvis',  
+    lastName:  'Costello', 
+    favoriteColor:'green',  
+    tags:[
+      'rock & pop',
+      'vocals',
+      'guitar'
+    ]
+  }, 
+  {
+    firstName: 'Robert', 
+    lastName: 'Johnson', 
+    favoriteColor:'purple',  
+    tags:[
+      'blues',
+      'vocals',
+      'guitar'
+    ]
+  },
+  {
+    firstName: 'Peter',  
+    lastName: 'Brötzmann', 
+    favoriteColor:'blue',  
+    tags:[
+      'jazz',
+      'sax'
+    ]
+  },
+  {
+    firstName: 'Billie',  
+    lastName: 'Holiday', 
+    favoriteColor:'purple',  
+    tags:[
+      'jazz',
+      'vocals'
+    ]
+  },
+  {
+    firstName: 'Chalie',  
+    lastName: 'Parker', 
+    favoriteColor:'pink',  
+    tags:[
+      'jazz',
+      'sax'
+    ]
+  },
+  {
+    firstName: 'Thelonious',  
+    lastName: 'Monk', 
+    favoriteColor:'green',  
+    tags:[
+      'jazz',
+      'piano'
+    ]
+  },
+  {
+    firstName: 'Chalie',  
+    lastName: 'Christian', 
+    favoriteColor:'green',  
+    tags:[
+      'jazz',
+      'guitar'
+    ]
+  },
+  {
+    firstName: 'Lionel',  
+    lastName: 'Hampton', 
+    favoriteColor:'blue',  
+    tags:[
+      'jazz',
+      'vibes'
+    ]
+  },
+  {
+    firstName: 'Joe',  
+    lastName: 'Pass', 
+    favoriteColor:'blue',  
+    tags:[  
+      'jazz',
+      'guitar'
+    ]
+  }
 ]

@@ -12,7 +12,7 @@
     <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
-
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/modernizr.js"></script>
   </head>
@@ -22,24 +22,33 @@
 
         <div class='sidebar col col-2'>
           <h2 class="h4 sidelined"><span class='mask'>Categories</span></h2>
-          <ul class='list-unstyled categories'>
+          <ul class='list-unstyled categories clear'>
             <li>
-              <h3 class="h6">Yes</h3>
-              <span class='count-no'></span>
+              <button class='toggle button grey-button col col-12 text-left' data-target='chosen:yes'>
+                Yes
+                <span class='count-yes'></span>
+                <i class='state fa right'></i>
+              </button>
             </li>
             <li>
-              <h3 class="h6">Maybe</h3>
-              <span class='count-maybe'></span>
+              <button class='toggle button grey-button col col-12 text-left' data-target="chosen:maybe">
+                Maybe
+                <span class='count-maybe'></span>
+                <i class='state fa right'></i>
+              </button>
             </li>
             <li>
-              <h3 class="h6">No</h3>
-              <span class='count-no'></span>
+              <button class='toggle button grey-button col col-12 text-left' data-target="chosen:no">
+                No
+                <span class='count-no'></span>
+                <i class='state fa right'></i>
+              </button>
             </li>
           </ul>
 
           <br/>
           <h2 class="h4 sidelined"><span class='mask'>Tags</span></h2>
-          <ul class='list-unstyled tags'>
+          <ul id='tags' class='list-unstyled'>
 
           </ul>
         </div>
@@ -56,11 +65,18 @@
 
     <script type='text/template' id="card-template">
 
-      <li class='col col-4 tablet-col-6 mobile-col-12'>
+      <li class='col col-4 tablet-col-6 mobile-full'>
         <div class='card'>
-          <dl class='properties'></dl>
+          <h4 class='h5'>{{firstName}} {{lastName}}</h3>
+          <ul class='tags list-unstyled list-inline'>
+            {{#tags}}
+              <li class='tag'>{{.}}</li>
+            {{/tags}}
+          </ul>
+          </dl>
+          <hr/>
           <form>
-            <span class="checkbox">
+            <span class="checkbox chosen-toggles">
               <input type='radio' name='chosen' value='yes' id='yes'>
               <label for='yes'>yes</label>
               <input type='radio' name='chosen' value='maybe' id='maybe'>
@@ -70,6 +86,13 @@
           </form>
         </div>
       </li>
+    </script>
+    <script type='text/template' id='tag-toggle-template'>
+      <button class='toggle button grey-button col col-12 text-left' data-target="tags:{{name}}">
+        {{name}}
+        <span class='count-no'></span>
+        <i class='state fa right'></i>
+      </button>
     </script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.js"></script>

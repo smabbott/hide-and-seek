@@ -4,46 +4,74 @@
   window.candidates || (window.candidates = [
     {
       firstName: 'David',
-      lastName: "Bowie"
+      lastName: "Bowie",
+      favoriteColor: 'blue',
+      tags: ['rock & pop', 'vocals']
     }, {
       firstName: 'Justin',
-      lastName: "Timberlake"
+      lastName: "Timberlake",
+      favoriteColor: 'red',
+      tags: ['rock & pop', 'vocals']
     }, {
       firstName: 'Debbie',
-      lastName: 'Harry'
+      lastName: 'Harry',
+      favoriteColor: 'green',
+      tags: ['rock & pop', 'vocals']
     }, {
       firstName: 'Aretha',
-      lastName: 'Franklin'
+      lastName: 'Franklin',
+      favoriteColor: 'beige',
+      tags: ['soul', 'vocals']
     }, {
       firstName: 'John',
-      lastName: 'Coltrane'
+      lastName: 'Coltrane',
+      favoriteColor: 'blue',
+      tags: ['jazz', 'sax']
     }, {
       firstName: 'Elvis',
-      lastName: 'Costello'
+      lastName: 'Costello',
+      favoriteColor: 'green',
+      tags: ['rock & pop', 'vocals', 'guitar']
     }, {
       firstName: 'Robert',
-      lastName: 'Johnson'
+      lastName: 'Johnson',
+      favoriteColor: 'purple',
+      tags: ['blues', 'vocals', 'guitar']
     }, {
       firstName: 'Peter',
-      lastName: 'Brötzmann'
+      lastName: 'Brötzmann',
+      favoriteColor: 'blue',
+      tags: ['jazz', 'sax']
     }, {
       firstName: 'Billie',
-      lastName: 'Holiday'
+      lastName: 'Holiday',
+      favoriteColor: 'purple',
+      tags: ['jazz', 'vocals']
     }, {
       firstName: 'Chalie',
-      lastName: 'Parker'
+      lastName: 'Parker',
+      favoriteColor: 'pink',
+      tags: ['jazz', 'sax']
     }, {
       firstName: 'Thelonious',
-      lastName: 'Monk'
+      lastName: 'Monk',
+      favoriteColor: 'green',
+      tags: ['jazz', 'piano']
     }, {
       firstName: 'Chalie',
-      lastName: 'Christian'
+      lastName: 'Christian',
+      favoriteColor: 'green',
+      tags: ['jazz', 'guitar']
     }, {
       firstName: 'Lionel',
-      lastName: 'Hampton'
+      lastName: 'Hampton',
+      favoriteColor: 'blue',
+      tags: ['jazz', 'vibes']
     }, {
       firstName: 'Joe',
-      lastName: 'Pass'
+      lastName: 'Pass',
+      favoriteColor: 'blue',
+      tags: ['jazz', 'guitar']
     }
   ]);
 

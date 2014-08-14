@@ -21,7 +21,7 @@ body {
   font-size: 1rem;
   line-height: 21px;
   line-height: 1.3125rem;
-  color: #404040;
+  color: #4d4d4d;
   background-color: #fff;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%; }
@@ -1146,6 +1146,27 @@ textarea {
 body {
   background-color: #cccccc; }
 
+hr {
+  background-color: gray; }
+
+.button.selected .state {
+  display: inline-block; }
+  .button.selected .state:before {
+    content: "\f06e"; }
+.button.selected:hover .state:before {
+  opacity: 0.5;
+  content: "\f070"; }
+.button.text-left, table caption.button {
+  text-align: left; }
+.button .state {
+  display: none; }
+.button:hover .state:before {
+  opacity: 0.5;
+  content: "\f06e"; }
+
+.button:hover .state {
+  display: inline-block; }
+
 .sidelined {
   position: relative; }
   .sidelined .mask {
@@ -1155,21 +1176,30 @@ body {
     content: '';
     display: block;
     width: 100%;
-    border-top: 2px solid #404040;
+    border-top: 2px solid #4d4d4d;
     top: 0.9em;
     position: relative; }
 
 .container {
   margin: 2em auto 0 auto; }
 
-.list-grid li {
-  padding: 1em; }
+.list-grid > li {
+  padding: 0 0.5em 1em 0.5em; }
 
 .card {
-  background-color: #404040;
+  background-color: #4d4d4d;
   color: white;
   padding: 1em; }
 
 .vacuum {
-  margin-left: -1em;
-  margin-right: -1em; }
+  margin-left: -0.5em;
+  margin-right: -0.5em; }
+
+ul {
+  margin-top: 0.5em; }
+
+.tag {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  font-size: 0.8em;
+  background-color: gray; }

@@ -2,6 +2,42 @@ body{
   background-color:$grey-light;
 }
 
+hr{
+  background-color:$grey-medium;
+}
+
+.button{
+  &.selected{
+    .state{
+      display:inline-block;
+      &:before{
+        content:"\f06e"; // eye
+      }
+    }
+    &:hover .state:before{
+      opacity:0.5;
+      content:"\f070"; // eye-slash
+    } 
+  }
+  &.text-left{
+    text-align: left;
+  }
+  .state{
+    display:none;
+  }
+  &:hover .state:before{
+    opacity:0.5;
+    content:"\f06e"; // eye
+  }
+}
+
+.button:hover{
+  .state{
+    display:inline-block
+  }
+}
+
+
 .sidelined{
   position:relative;
   .mask{
@@ -22,10 +58,8 @@ body{
   margin:2em auto 0 auto;
 }
 
-.list-grid{
-  li{
-    padding:1em;
-  }
+.list-grid > li{
+  padding:0 0.5em 1em 0.5em;
 }
 
 .card{
@@ -35,6 +69,18 @@ body{
 }
 
 .vacuum{
-  margin-left:-1em;
-  margin-right:-1em;
+  margin-left:-0.5em;
+  margin-right:-0.5em;
+}
+
+ul{
+  margin-top:0.5em;
+}
+
+.tag{
+  padding-left:0.5em;
+  padding-right:0.5em;
+  font-size:0.8em;
+  // border:1px solid $grey-light;
+  background-color:$grey-medium;
 }
