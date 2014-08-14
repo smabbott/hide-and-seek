@@ -1206,3 +1206,9 @@ ul {
 
 button:focus {
   outline: none; }
+
+.grey-button {
+  background-color: #bfbfbf; }
+
+.filtering .grey-button {
+  background-color: #f2f2f2; }

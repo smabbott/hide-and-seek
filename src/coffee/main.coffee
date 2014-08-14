@@ -52,15 +52,40 @@ class FiltersController
     e.data.self.filter()
 
   filter:->
-    if @filters.length > 0
+    chosenFilters = @filters.filter (f)->
+      return f.match(/chosen/)
+    tagFilters = @filters.filter (f)->
+      return f.match(/tag/)
+
+    $('.categories').toggleClass('filtering', chosenFilters.length > 0)
+    $('#tags').toggleClass('filtering', tagFilters.length > 0)
+    # loop through all cards,
+    # Each card must have at least one item from both chosen and tags 
+    # unless either of those is empty
+
+    if chosenFilters.length > 0 or tagFilters.length > 0
+      # first hid all of the cards
       for card in window.cards
         card.el.hide()
-        for filter in @filters
+        matchChosen = chosenFilters.length == 0
+        matchTags   = tagFilters.length == 0
+
+        for filter in chosenFilters
           k = filter.match(/^(.*)\:/)[1]
           v = filter.match(/\:(.*)$/)[1]
-          if (card.publicProperties[k] == v) or (card.publicProperties['tags'].indexOf(v) > -1)
-            card.el.show()
+          if (card.publicProperties[k] == v)
+            # card.el.show()
+            matchChosen = true
             break
+
+        for filter in tagFilters
+          v = filter.match(/\:(.*)$/)[1]
+          if (card.publicProperties['tags'].indexOf(v) > -1)
+            # card.el.show()
+            matchTags = true
+            break
+
+        card.el.show() if matchChosen and matchTags
     else
       for card in window.cards
         card.el.show()

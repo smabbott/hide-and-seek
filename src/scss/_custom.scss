@@ -88,3 +88,11 @@ ul{
 button:focus{
   outline:none;
 }
+
+.grey-button{
+  background-color:$grey-medium-light;
+}
+
+.filtering .grey-button{
+  background-color:$grey-lightest;
+}

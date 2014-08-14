@@ -84,37 +84,52 @@
     };
 
     FiltersController.prototype.filter = function() {
-      var card, filter, k, v, _i, _j, _len, _len1, _ref, _ref1, _results, _results1;
-      if (this.filters.length > 0) {
+      var card, chosenFilters, filter, k, matchChosen, matchTags, tagFilters, v, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _results, _results1;
+      chosenFilters = this.filters.filter(function(f) {
+        return f.match(/chosen/);
+      });
+      tagFilters = this.filters.filter(function(f) {
+        return f.match(/tag/);
+      });
+      $('.categories').toggleClass('filtering', chosenFilters.length > 0);
+      $('#tags').toggleClass('filtering', tagFilters.length > 0);
+      if (chosenFilters.length > 0 || tagFilters.length > 0) {
         _ref = window.cards;
         _results = [];
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           card = _ref[_i];
           card.el.hide();
-          _results.push((function() {
-            var _j, _len1, _ref1, _results1;
-            _ref1 = this.filters;
-            _results1 = [];
-            for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-              filter = _ref1[_j];
-              k = filter.match(/^(.*)\:/)[1];
-              v = filter.match(/\:(.*)$/)[1];
-              if ((card.publicProperties[k] === v) || (card.publicProperties['tags'].indexOf(v) > -1)) {
-                card.el.show();
-                break;
-              } else {
-                _results1.push(void 0);
-              }
+          matchChosen = chosenFilters.length === 0;
+          matchTags = tagFilters.length === 0;
+          for (_j = 0, _len1 = chosenFilters.length; _j < _len1; _j++) {
+            filter = chosenFilters[_j];
+            k = filter.match(/^(.*)\:/)[1];
+            v = filter.match(/\:(.*)$/)[1];
+            if (card.publicProperties[k] === v) {
+              matchChosen = true;
+              break;
             }
-            return _results1;
-          }).call(this));
+          }
+          for (_k = 0, _len2 = tagFilters.length; _k < _len2; _k++) {
+            filter = tagFilters[_k];
+            v = filter.match(/\:(.*)$/)[1];
+            if (card.publicProperties['tags'].indexOf(v) > -1) {
+              matchTags = true;
+              break;
+            }
+          }
+          if (matchChosen && matchTags) {
+            _results.push(card.el.show());
+          } else {
+            _results.push(void 0);
+          }
         }
         return _results;
       } else {
         _ref1 = window.cards;
         _results1 = [];
-        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-          card = _ref1[_j];
+        for (_l = 0, _len3 = _ref1.length; _l < _len3; _l++) {
+          card = _ref1[_l];
           _results1.push(card.el.show());
         }
         return _results1;
