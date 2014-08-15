@@ -1,3 +1,12 @@
+// grid extension
+// .offset-2{
+//   margin-left: 16.66667%; // Fallback if calc() is not supported
+//   margin-left: calc(100% / 12 * 2);
+//   margin-left: -webkit-calc(100% / 12 * 2);
+//   margin-left: -moz-calc(100% / 12 * 2);
+// }
+
+
 body{
   background-color:$grey-light;
 }
@@ -8,6 +17,7 @@ hr{
 
 .button{
   &.selected{
+
     .state{
       display:inline-block;
       &:before{
@@ -36,6 +46,17 @@ hr{
     display:inline-block
   }
 }
+
+// TO make the sidebar fixed...
+// .sidebar-wrapper{
+//   min-height:100px;
+//   // padding:0;
+// }
+
+// .sidebar{
+//   position:fixed;
+//   width:136px;
+// }
 
 
 .sidelined{
@@ -94,5 +115,16 @@ button:focus{
 }
 
 .filtering .grey-button{
-  background-color:$grey-lightest;
+  background-color:$grey-lighter;
+  &.selected{
+    background-color:$grey-lightest;
+  }
+}
+
+.button[disabled]{
+  background-color:$grey-light;
+  opacity:0.5;
+  &:hover .state:before{
+    display:none;
+  }
 }

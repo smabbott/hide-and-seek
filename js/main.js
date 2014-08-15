@@ -39,8 +39,9 @@
 
     Toggle.state = true;
 
-    function Toggle(el) {
+    function Toggle(el, count) {
       this.el = el;
+      this.count = count != null ? count : 0;
       this.target = this.el.data('target');
       this.el.on('click', {
         self: this
@@ -68,6 +69,9 @@
         self: self
       }, this.update);
       $('.candidates').on('card:updated', function(e) {
+        $('.toggle-yes').attr('disabled', self.categorizedAs('yes').length === 0);
+        $('.toggle-maybe').attr('disabled', self.categorizedAs('maybe').length === 0);
+        $('.toggle-no').attr('disabled', self.categorizedAs('no').length === 0);
         return self.filter();
       });
     }
@@ -136,12 +140,26 @@
       }
     };
 
+    FiltersController.prototype.taggedWith = function(tag) {
+      var matches;
+      return matches = window.cards.filter(function(card) {
+        return card.publicProperties.tags.indexOf(tag) > -1;
+      });
+    };
+
+    FiltersController.prototype.categorizedAs = function(category) {
+      var matches;
+      return matches = window.cards.filter(function(card) {
+        return card.publicProperties['chosen'] === category;
+      });
+    };
+
     return FiltersController;
 
   })();
 
   $(function() {
-    var candidate, card, filtersController, tag, tags, tmp, toggle, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _results;
+    var candidate, card, count, tag, tags, tmp, toggle, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _results;
     window.cards = (function() {
       var _i, _len, _ref, _results;
       _ref = window.candidates;
@@ -168,7 +186,7 @@
       }
       return _results;
     })();
-    filtersController = new FiltersController($('.sidebar'));
+    window.filtersController = new FiltersController($('.sidebar'));
     tags = [];
     _ref1 = window.candidates;
     for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
@@ -179,8 +197,10 @@
     _results = [];
     for (_k = 0, _len2 = tags.length; _k < _len2; _k++) {
       tag = tags[_k];
+      count = filtersController.taggedWith(tag).length;
       tmp = Mustache.render($('#tag-toggle-template').html(), {
-        name: tag
+        name: tag,
+        count: count
       });
       toggle = new Toggle($(tmp));
       _results.push($('#tags').append($('<li></li>').append(toggle.el)));

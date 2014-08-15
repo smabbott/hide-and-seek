@@ -20,40 +20,43 @@
     <div class="wrapper clear">
       <div class='container'>
 
-        <div class='sidebar col col-2'>
-          <h2 class="h4 sidelined"><span class='mask'>Categories</span></h2>
-          <ul class='list-unstyled categories clear'>
-            <li>
-              <button class='toggle button grey-button col col-12 text-left' data-target='chosen:yes'>
-                Yes
-                <span class='count-yes'></span>
-                <i class='state fa right'></i>
-              </button>
-            </li>
-            <li>
-              <button class='toggle button grey-button col col-12 text-left' data-target="chosen:maybe">
-                Maybe
-                <span class='count-maybe'></span>
-                <i class='state fa right'></i>
-              </button>
-            </li>
-            <li>
-              <button class='toggle button grey-button col col-12 text-left' data-target="chosen:no">
-                No
-                <span class='count-no'></span>
-                <i class='state fa right'></i>
-              </button>
-            </li>
-          </ul>
+        <div class='sidebar-wrapper col col-2'>
+          <div class='sidebar'>
 
-          <br/>
-          <h2 class="h4 sidelined"><span class='mask'>Tags</span></h2>
-          <ul id='tags' class='list-unstyled'>
+            <h2 class="h4 sidelined"><span class='mask'>Categories</span></h2>
+            <ul class='list-unstyled categories clear'>
+              <li>
+                <button class='toggle toggle-yes button grey-button col col-12 text-left' data-target='chosen:yes' disabled>
+                  <span class='count-yes'>0</span>
+                  Yes
+                  <i class='state fa right'></i>
+                </button>
+              </li>
+              <li>
+                <button class='toggle toggle-maybe button grey-button col col-12 text-left' data-target="chosen:maybe" disabled>
+                  <span class='count-maybe'>0</span>
+                  Maybe
+                  <i class='state fa right'></i>
+                </button>
+              </li>
+              <li>
+                <button class='toggle toggle-no button grey-button col col-12 text-left' data-target="chosen:no" disabled>
+                  <span class='count-no'>0</span>
+                  No
+                  <i class='state fa right'></i>
+                </button>
+              </li>
+            </ul>
 
-          </ul>
+            <br/>
+            <h2 class="h4 sidelined"><span class='mask'>Tags</span></h2>
+            <ul id='tags' class='list-unstyled'>
+
+            </ul>
+          </div>
         </div>
 
-        <div class='col col-10'>
+        <div class='col col-10 offset-2'>
           <h2 class="h4 sidelined"><span class='mask'>Candidates</span></h2>
           <ul class='list-unstyled list-grid candidates clear vacuum'>
             
@@ -89,8 +92,8 @@
     </script>
     <script type='text/template' id='tag-toggle-template'>
       <button class='toggle button grey-button col col-12 text-left' data-target="tags:{{name}}">
+        <span class='count'>{{count}}</span>
         {{name}}
-        <span class='count-no'></span>
         <i class='state fa right'></i>
       </button>
     </script>

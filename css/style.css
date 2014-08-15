@@ -1211,4 +1211,12 @@ button:focus {
   background-color: #bfbfbf; }
 
 .filtering .grey-button {
-  background-color: #f2f2f2; }
+  background-color: #d9d9d9; }
+  .filtering .grey-button.selected {
+    background-color: #f2f2f2; }
+
+.button[disabled] {
+  background-color: #cccccc;
+  opacity: 0.5; }
+  .button[disabled]:hover .state:before {
+    display: none; }

@@ -24,7 +24,7 @@ class Card
 class Toggle
   @state = true
 
-  constructor:(@el)->
+  constructor:(@el, @count = 0)->
     @target = @el.data('target')
     @el.on 'click', {self:@}, @toggle
 
@@ -41,6 +41,9 @@ class FiltersController
     @filters = []
     @el.on 'toggle:clicked', {self:self}, @update
     $('.candidates').on 'card:updated', (e)->
+      $('.toggle-yes').attr('disabled', self.categorizedAs('yes').length == 0)
+      $('.toggle-maybe').attr('disabled', self.categorizedAs('maybe').length == 0)
+      $('.toggle-no').attr('disabled', self.categorizedAs('no').length == 0)
       self.filter()
 
   update:(e, toggle)->
@@ -90,8 +93,18 @@ class FiltersController
       for card in window.cards
         card.el.show()
 
+  # TODO: use this method for filtering?
+  taggedWith:(tag)->
+    matches = window.cards.filter (card)->
+      return card.publicProperties.tags.indexOf(tag) > -1
 
-# This is where the magic happens
+  # TODO: maybe this belongs in another controller
+  # Maybe it can be merged with taggedWith() and used in filter
+  categorizedAs:(category)->
+    matches = window.cards.filter (card)->
+      return card.publicProperties['chosen'] == category
+
+# This is where it all kicks off
 $ ->
   # create a bunch of cards and render them
   window.cards = for candidate in window.candidates
@@ -104,7 +117,7 @@ $ ->
   window.toggles = for toggle in $('.toggle')
     new Toggle($(toggle))
 
-  filtersController = new FiltersController($('.sidebar'))
+  window.filtersController = new FiltersController($('.sidebar'))
 
   # collect tags from candidates. create toggle for each, insert in tags list
   tags = []
@@ -113,7 +126,8 @@ $ ->
   tags = $.unique(tags)
 
   for tag in tags
-    tmp = Mustache.render($('#tag-toggle-template').html(), {name:tag})
+    count = filtersController.taggedWith(tag).length
+    tmp = Mustache.render($('#tag-toggle-template').html(), {name:tag, count:count})
     toggle = new Toggle($(tmp))
     $('#tags').append($('<li></li>').append(toggle.el))
 
