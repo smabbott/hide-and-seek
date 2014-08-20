@@ -88,7 +88,7 @@
     };
 
     FiltersController.prototype.filter = function() {
-      var card, chosenFilters, filter, k, matchChosen, matchTags, tagFilters, v, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _results, _results1;
+      var card, chosenFilters, filter, matchables, matches, tagFilters, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _results, _results1;
       chosenFilters = this.filters.filter(function(f) {
         return f.match(/chosen/);
       });
@@ -103,26 +103,17 @@
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           card = _ref[_i];
           card.el.hide();
-          matchChosen = chosenFilters.length === 0;
-          matchTags = tagFilters.length === 0;
-          for (_j = 0, _len1 = chosenFilters.length; _j < _len1; _j++) {
-            filter = chosenFilters[_j];
-            k = filter.match(/^(.*)\:/)[1];
-            v = filter.match(/\:(.*)$/)[1];
-            if (card.publicProperties[k] === v) {
-              matchChosen = true;
+          matches = true;
+          matchables = card.publicProperties['tags'].concat(card.publicProperties['chosen']);
+          _ref1 = this.filters;
+          for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+            filter = _ref1[_j];
+            if (matchables.indexOf(filter.match(/\:(.*)$/)[1]) === -1) {
+              matches = false;
               break;
             }
           }
-          for (_k = 0, _len2 = tagFilters.length; _k < _len2; _k++) {
-            filter = tagFilters[_k];
-            v = filter.match(/\:(.*)$/)[1];
-            if (card.publicProperties['tags'].indexOf(v) > -1) {
-              matchTags = true;
-              break;
-            }
-          }
-          if (matchChosen && matchTags) {
+          if (matches) {
             _results.push(card.el.show());
           } else {
             _results.push(void 0);
@@ -130,10 +121,10 @@
         }
         return _results;
       } else {
-        _ref1 = window.cards;
+        _ref2 = window.cards;
         _results1 = [];
-        for (_l = 0, _len3 = _ref1.length; _l < _len3; _l++) {
-          card = _ref1[_l];
+        for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
+          card = _ref2[_k];
           _results1.push(card.el.show());
         }
         return _results1;

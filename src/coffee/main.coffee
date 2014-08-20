@@ -67,28 +67,16 @@ class FiltersController
     # unless either of those is empty
 
     if chosenFilters.length > 0 or tagFilters.length > 0
-      # first hid all of the cards
+      # if @filters.length > 0 
       for card in window.cards
         card.el.hide()
-        matchChosen = chosenFilters.length == 0
-        matchTags   = tagFilters.length == 0
-
-        for filter in chosenFilters
-          k = filter.match(/^(.*)\:/)[1]
-          v = filter.match(/\:(.*)$/)[1]
-          if (card.publicProperties[k] == v)
-            # card.el.show()
-            matchChosen = true
+        matches = true
+        matchables = card.publicProperties['tags'].concat(card.publicProperties['chosen'])
+        for filter in @filters
+          if matchables.indexOf(filter.match(/\:(.*)$/)[1]) == -1
+            matches = false
             break
-
-        for filter in tagFilters
-          v = filter.match(/\:(.*)$/)[1]
-          if (card.publicProperties['tags'].indexOf(v) > -1)
-            # card.el.show()
-            matchTags = true
-            break
-
-        card.el.show() if matchChosen and matchTags
+        card.el.show() if matches
     else
       for card in window.cards
         card.el.show()
